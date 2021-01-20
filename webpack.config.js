@@ -31,8 +31,7 @@ module.exports = {
     }
   },
   "module": {
-    rules: [
-      {
+    rules: [{
         test: /\.jsx?$/,
         include: srcPath,
         use: {
@@ -50,15 +49,21 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        use: [{
+          loader: 'file-loader',
+        }, ],
       },
       {
         test: /\.mp4$/,
         use: 'file-loader?name=videos/[name].[ext]',
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
       }
     ]
   }

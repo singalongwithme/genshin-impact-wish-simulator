@@ -172,7 +172,7 @@ video {
   margin: 2rem 15rem;
 }
 
-.carousel.carousel-slider {
+.swiper-container {
   display: flex;
 }
 

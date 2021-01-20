@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BannerButton from './banner-button';
-import { Carousel } from 'react-responsive-carousel';
+// import { Carousel } from 'react-responsive-carousel';
+import { Swiper } from "swiper/react";
 import Modal from './modal';
 const banners = require.context('../assets/images/banners', true);
 export default class Banners extends Component {
@@ -33,6 +34,7 @@ export default class Banners extends Component {
     }
   }
   onCarouselChange(index) {
+    console.log("firing");
     this.switchBanner(Object.keys(this.state.banners)[index])
   }
   switchBanner(selectedBanner) {
@@ -117,16 +119,12 @@ export default class Banners extends Component {
               <div className="close-window"></div>
             </div>
             <div className="carousel-container">
-              <Carousel
+              <Swiper
                 className={"carousel"}
-                showThumbs={false}
-                showIndicators={false}
-                showStatus={false}
-                emulateTouch={false}
-                showArrows={false}
-                infiniteLoop={true}
-                selectedItem={selectedBannerIndex}
-                onChange={this.onCarouselChange.bind(this)}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                onSwiper={swiper => console.log(swiper)}
+                onSlideChange={() => console.log("firing")}
               >
                 {
                   bannerKeys.map(banner => {
@@ -137,7 +135,7 @@ export default class Banners extends Component {
                     )
                   })
                 }
-              </Carousel>
+              </Swiper>
             </div>
             <div className="action-container">
               <div className="button-container">
